@@ -48,6 +48,8 @@ def run_game(screen, clock, level_paths, current_level_index=0):
         pygame.quit()
         sys.exit()
 
+    bg_img = pygame.image.load("assets/images/bg.png").convert()
+
     level_path = level_paths[current_level_index]
 
     level_data = load_level(level_path)
@@ -87,7 +89,7 @@ def run_game(screen, clock, level_paths, current_level_index=0):
         if pygame.sprite.spritecollide(player, exits, False, pygame.sprite.collide_mask):
             return run_game(screen, clock, level_paths, current_level_index + 1)
 
-        screen.fill(SKY_BLUE)
+        screen.blit(bg_img, (0,0))
         all_sprites.draw(screen)
         player.bullets.draw(screen)
         pygame.display.flip()

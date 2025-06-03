@@ -12,8 +12,10 @@ def draw_text(surface, text, x, y, font, color=BLACK):
 
 def show_menu(screen, clock):
     font = pygame.font.Font(None, 60)  # Шрифт создаётся внутри функции — безопасно
+    bg_menu = pygame.image.load("assets/images/bg_menu.png")
+
     while True:
-        screen.fill(SKY_BLUE)
+        screen.blit(bg_menu, (0,0))
 
         # Рисуем текст заголовка и подсказок
         draw_text(screen, "Boshy Clone", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 3, font)
