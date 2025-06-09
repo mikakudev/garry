@@ -79,10 +79,18 @@ def run_game(screen, clock, level_paths, current_level_index=0):
             for enemy in hit_enemies:
                 enemy.take_damage()
                 bullet.kill()
+            for platform in platforms:
+                if pygame.sprite.collide_mask(bullet, platform):
+                    bullet.kill()
+
 
         # Проверка на столкновение с шипами
         for spike in spikes:
             if pygame.sprite.collide_mask(player, spike):
+                return run_game(screen, clock, level_paths, current_level_index)
+
+        for enemy in enemies:
+            if pygame.sprite.collide_mask(player, enemy):
                 return run_game(screen, clock, level_paths, current_level_index)
 
         # Проверка на достижение выхода
