@@ -14,6 +14,9 @@ def main():
     level_paths = [
         "levels/level1.txt",
         "levels/level2.txt",
+        "levels/level3.txt",
+        "levels/level4.txt",
+        "levels/level5.txt",
         # Добавь больше уровней при необходимости
     ]
 
