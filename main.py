@@ -17,8 +17,7 @@ def main():
         "levels/level3.txt",
         "levels/level4.txt",
         "levels/level5.txt",
-        # Добавь больше уровней при необходимости
-    ]
+        ]
 
     show_menu(screen, clock)
     run_game(screen, clock, level_paths)

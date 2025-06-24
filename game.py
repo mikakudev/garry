@@ -71,9 +71,9 @@ def run_game(screen, clock, level_paths, current_level_index=0):
         keys = pygame.key.get_pressed()
         player.update(keys, platforms)
         player.bullets.update()
+        enemies.update()
         player.bullets.draw(screen)
 
-        # Проверка попаданий пуль по врагам
         for bullet in player.bullets:
             hit_enemies = pygame.sprite.spritecollide(bullet, enemies, False, pygame.sprite.collide_mask)
             for enemy in hit_enemies:
@@ -83,8 +83,6 @@ def run_game(screen, clock, level_paths, current_level_index=0):
                 if pygame.sprite.collide_mask(bullet, platform):
                     bullet.kill()
 
-
-        # Проверка на столкновение с шипами
         for spike in spikes:
             if pygame.sprite.collide_mask(player, spike):
                 return run_game(screen, clock, level_paths, current_level_index)
@@ -93,7 +91,6 @@ def run_game(screen, clock, level_paths, current_level_index=0):
             if pygame.sprite.collide_mask(player, enemy):
                 return run_game(screen, clock, level_paths, current_level_index)
 
-        # Проверка на достижение выхода
         if pygame.sprite.spritecollide(player, exits, False, pygame.sprite.collide_mask):
             return run_game(screen, clock, level_paths, current_level_index + 1)
 
